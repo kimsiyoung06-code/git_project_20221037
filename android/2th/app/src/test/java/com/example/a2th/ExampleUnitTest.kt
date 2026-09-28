@@ -207,7 +207,7 @@ class ExampleUnitTest {
         for (dan in 10..13) {
             print(dan.toString() + "단 : ")
 
-            for (i in 1..dan) {
+            for (i in 5..dan) {
                 print(dan.toString() + " x " + i + " = " + (dan * i) + "    ")
             }
 
