@@ -1,0 +1,43 @@
+.main-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav a {
+    position: relative;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.main-header.scrolled .main-nav a {
+    color: #333333;
+}
+
+.main-header.scrolled .main-nav a:hover {
+    color: #2ecc71; /* 대한볼링협회 메인 컬러 포인트 */
+}
+
+/* 마우스 호버 시 밑줄 애니메이션 */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #2ecc71;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .main-nav {
+        display: none; /* 모바일에서는 기본 숨김 (필요시 햄버거 메뉴로 구현) */
+    }
+}
