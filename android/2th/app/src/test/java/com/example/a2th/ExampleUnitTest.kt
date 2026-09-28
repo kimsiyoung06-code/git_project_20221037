@@ -210,8 +210,6 @@ class ExampleUnitTest {
             for (i in 5..dan) {
                 print(dan.toString() + " x " + i + " = " + (dan * i) + "    ")
             }
-
-            println()
         }
     }
 }
