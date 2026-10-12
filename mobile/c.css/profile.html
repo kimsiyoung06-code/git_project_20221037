@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile - 김시영</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body { background-color: #f4f6f9; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+        .profile-container { background: #fff; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); overflow: hidden; max-width: 800px; width: 100%; display: flex; flex-wrap: wrap; }
+        .profile-left { background: #1a1a1a; color: white; padding: 50px 30px; text-align: center; flex: 1; min-width: 300px; }
+        .profile-right { padding: 50px 40px; flex: 2; min-width: 300px; }
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #2ecc71; object-fit: cover; margin-bottom: 20px; }
+        .info-title { font-size: 0.85rem; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .info-desc { font-size: 1.1rem; color: #222; font-weight: 600; margin-bottom: 25px; }
+        .btn-back { display: inline-block; background: #2ecc71; color: #fff; padding: 12px 30px; border-radius: 8px; font-weight: bold; margin-top: 20px; text-decoration: none; transition: 0.3s; }
+        .btn-back:hover { background: #27ae60; color: #fff; transform: translateY(-3px); }
+        
+        .highlight-text { color: #2ecc71; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-left">
+            <img src="imgs/karina.jpg" class="profile-img" alt="프로필">
+            <h2 class="fw-bold mb-1">김시영</h2>
+            <p class="text-success fw-bold mb-4">Web Developer</p>
+            <p class="small opacity-75"><br></p>
+        </div>
+        
+        <div class="profile-right">
+            <h3 class="fw-bold border-bottom pb-3 mb-4">학적 및 프로젝트 정보</h3>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="info-title">University</p>
+                    <p class="info-desc">장안대학교 (Jangan Univ.)</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="info-title">Major / ID</p>
+                    <p class="info-desc">컴퓨터공학과 / 20221037</p>
+                </div>
+                <div class="col-12 mt-2">
+                    <p class="info-title">About Me & Project</p>
+                    <p class="info-desc" style="font-size: 1rem; font-weight: 400; color: #444; line-height: 1.8;">
+                        <strong>반갑습니다. 22학번 김시영입니다!</strong><br><br>
+                        저는 장안대학교에서 컴퓨터공학을 전공하고 있고, 평소 취미는 <span class="highlight-text">볼링이랑 헬스, 그리고 게임</span>입니다. <br>
+                        성격이 하나에 꽂히면 끝까지 파고드는 편이라 운동도 꾸준히 하고 있고, 집에서는 게임을 즐기며 스트레스를 풀곤 합니다. <br><br>
+                        이번 웹 개발 과제도 제가 좋아하는 것들을 제 스타일대로 완성해 보고 싶어서 끝까지 노력했습니다. 제가 좋아하는 볼링을 주제로 한눈에 보기 편하게 정리한 공간이니, 재미있게 봐주세요!
+                    </p>
+                </div>
+            </div>
+            
+            <a href="index.html" class="btn-back">← 메인 홈페이지로 이동</a>
+        </div>
+    </div>
+
+</body>
+</html>
