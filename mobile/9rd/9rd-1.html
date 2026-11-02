@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>벽돌 깨기</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101827;color:#f8fafc;font-family:system-ui,sans-serif}.game{width:min(94vw,560px);text-align:center}h1{margin:0 0 12px;font-size:26px}.bar{display:flex;justify-content:space-between;margin:0 4px 10px;color:#cbd5e1}canvas{display:block;width:100%;border:1px solid #334155;border-radius:12px;background:#172337;touch-action:none}button{margin-top:14px;padding:10px 24px;border:0;border-radius:8px;background:#38bdf8;color:#082f49;font-size:16px;font-weight:700;cursor:pointer}.hint{margin:10px 0;color:#94a3b8;font-size:13px}
+</style>
+</head>
+<body>
+<main class="game">
+  <h1>벽돌 깨기</h1>
+  <div class="bar"><span>점수 <b id="score">0</b></span><span>목숨 <b id="lives">3</b></span></div>
+  <canvas id="board" width="520" height="600" aria-label="벽돌 깨기 게임"></canvas>
+  <button id="restart">다시 시작</button>
+  <p class="hint">마우스·터치 또는 ← → 방향키로 패들을 움직이세요</p>
+</main>
+<script>
+// 게임 화면과 점수·목숨 표시를 위한 HTML 요소입니다.
+const canvas=document.querySelector("#board");
+const ctx=canvas.getContext("2d");
+const scoreText=document.querySelector("#score");
+const livesText=document.querySelector("#lives");
+
+// 캔버스 크기와 벽돌 배치 수입니다.
+const W=canvas.width,H=canvas.height,rows=5,cols=8;
+// 패들의 위치와 크기입니다.
+const paddle={x:220,y:565,w:80,h:12};
+// 공의 위치, 반지름, 이동 속도입니다.
+const ball={x:260,y:540,r:7,dx:3,dy:-4};
+
+// 벽돌 목록, 현재 점수와 남은 목숨, 게임 진행 여부입니다.
+let bricks=[],score=0,lives=3,running=true;
+
+// 게임 상태를 초기화하고 벽돌을 다시 만든 뒤 화면에 표시합니다.
+function reset(){
+  score=0;lives=3;running=true;paddle.x=(W-paddle.w)/2;
+  ball.x=W/2;ball.y=H-60;ball.dx=3;ball.dy=-4;
+  bricks=Array.from({length:rows*cols},(_,i)=>({
+    x:12+(i%cols)*63,y:45+Math.floor(i/cols)*27,w:55,h:17,on:true,
+    color:["#fb7185","#fb923c","#facc15","#4ade80","#60a5fa"][Math.floor(i/cols)]
+  }));
+  scoreText.textContent=score;livesText.textContent=lives;draw();
+}
+
+// 벽돌, 패들, 공과 게임 종료 문구를 캔버스에 그립니다.
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  bricks.forEach(b=>{if(b.on){ctx.fillStyle=b.color;ctx.fillRect(b.x,b.y,b.w,b.h)}});
+  ctx.fillStyle="#e2e8f0";ctx.fillRect(paddle.x,paddle.y,paddle.w,paddle.h);
+  ctx.beginPath();ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);ctx.fillStyle="#f8fafc";ctx.fill();
+  if(!running){ctx.fillStyle="#fff";ctx.font="bold 28px sans-serif";ctx.textAlign="center";ctx.fillText(lives?"성공!":"게임 오버",W/2,H/2)}
+}
+
+// 한 프레임 동안 공을 이동시키고 벽·패들·벽돌 충돌을 처리합니다.
+function frame(){
+  if(!running)return;
+  ball.x+=ball.dx;ball.y+=ball.dy;
+  if(ball.x<ball.r||ball.x>W-ball.r)ball.dx*=-1;
+  if(ball.y<ball.r)ball.dy*=-1;
+  if(ball.dy>0&&ball.y+ball.r>=paddle.y&&ball.x>=paddle.x&&ball.x<=paddle.x+paddle.w){
+    ball.dy=-Math.abs(ball.dy);ball.dx=((ball.x-(paddle.x+paddle.w/2))/(paddle.w/2))*4;
+  }
+  for(const b of bricks)if(b.on&&ball.x>b.x&&ball.x<b.x+b.w&&ball.y-ball.r<b.y+b.h&&ball.y+ball.r>b.y){
+    b.on=false;ball.dy*=-1;scoreText.textContent=++score;break;
+  }
+  if(ball.y>H){if(--lives===0)running=false;livesText.textContent=lives;ball.x=W/2;ball.y=H-60;ball.dy=-4}
+  if(bricks.every(b=>!b.on))running=false;
+  draw();
+  if(running)requestAnimationFrame(frame);
+}
+
+// 포인터의 화면 좌표를 캔버스 좌표로 바꿔 패들을 이동합니다.
+function move(x){
+  const r=canvas.getBoundingClientRect();
+  paddle.x=Math.max(0,Math.min(W-paddle.w,(x-r.left)*W/r.width-paddle.w/2));
+}
+
+// 마우스·터치 위치와 방향키 입력에 따라 패들을 조작합니다.
+canvas.addEventListener("pointermove",e=>move(e.clientX));
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowLeft")paddle.x=Math.max(0,paddle.x-28);
+  if(e.key==="ArrowRight")paddle.x=Math.min(W-paddle.w,paddle.x+28);
+});
+// 버튼을 누르면 초기화 후 게임을 다시 시작합니다.
+document.querySelector("#restart").addEventListener("click",()=>{reset();frame()});
+
+// 초기 화면을 표시하고 게임을 시작합니다.
+reset();frame();
+</script>
+</body>
+</html>

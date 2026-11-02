@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>로또 번호 생성기</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/lotto.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="heading">
+      <p class="eyebrow">LUCKY NUMBER PICKER</p>
+      <h1>로또 번호 생성기</h1>
+      <p class="intro">버튼을 눌러 행운의 번호 6개를 뽑아보세요.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="result-title">
+      <div class="result-heading">
+        <h2 id="result-title">오늘의 번호</h2>
+        <p>생성 횟수 <strong id="count" aria-live="polite">0</strong>회</p>
+      </div>
+      <div id="numbers" class="numbers" aria-live="polite" aria-label="생성된 로또 번호">
+        <span class="empty">번호 뽑기를 눌러 시작하세요</span>
+      </div>
+      <div class="actions">
+        <button id="generate" class="primary" type="button">번호 뽑기</button>
+        <button id="clear" class="secondary" type="button">초기화</button>
+      </div>
+    </section>
+
+    <section class="panel manual" aria-labelledby="manual-title">
+      <div class="result-heading">
+        <h2 id="manual-title">번호 직접 고르기</h2>
+        <p>선택 <strong id="selected-count">0</strong>/6</p>
+      </div>
+      <p class="section-hint">번호를 눌러 6개를 선택하세요. 각 번호 아래에 과거 출현 횟수가 표시됩니다.</p>
+      <div id="number-grid" class="number-grid" aria-label="수동 선택 번호"></div>
+      <div class="actions">
+        <button id="apply-manual" class="primary" type="button" disabled>선택 번호 적용</button>
+      </div>
+    </section>
+
+    <section class="panel stats" aria-labelledby="stats-title">
+      <div class="result-heading">
+        <h2 id="stats-title">많이 나온 번호</h2>
+        <span class="stats-period">1~1205회 · 보너스 제외</span>
+      </div>
+      <div id="top-numbers" class="top-numbers" aria-live="polite"></div>
+      <p class="stats-note">과거 출현 횟수는 앞으로의 당첨 확률을 높여주지 않습니다. <a href="https://github.com/godmode2k/lotto645/blob/main/lotto645_%EB%8B%B9%EC%B2%A8%EB%B2%88%ED%98%B81205%ED%9A%8C%EC%B0%A8%EA%B9%8C%EC%A7%80.csv" target="_blank" rel="noreferrer">회차별 자료 출처</a></p>
+    </section>
+
+    <details class="design">
+      <summary>설계표 보기</summary>
+      <table>
+        <tbody>
+          <tr><th scope="row">목적</th><td>1~45 사이에서 중복 없는 번호 6개 생성</td></tr>
+          <tr><th scope="row">입력</th><td>자동 생성·번호 직접 선택·초기화 버튼 클릭</td></tr>
+          <tr><th scope="row">출력</th><td>오름차순 번호 공, 생성 횟수, 과거 출현 횟수</td></tr>
+          <tr><th scope="row">기술·제약</th><td>HTML, CSS, JavaScript만 사용 · 외부 라이브러리 없음</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </main>
+</body>
+</html>
