@@ -9,72 +9,97 @@
     android:padding="24dp"
     tools:context=".MainActivity">
 
-    <!-- 첫 번째 숫자 입력 칸 -->
+    <!-- 1. 성명 -->
     <EditText
-        android:id="@+id/editNum1"
+        android:id="@+id/editName"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:hint="첫 번째 숫자 입력"
-        android:inputType="numberSigned|numberDecimal"
-        android:gravity="center"
-        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="성명"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 두 번째 숫자 입력 칸 -->
+    <!-- 2. 비밀번호 -->
     <EditText
-        android:id="@+id/editNum2"
+        android:id="@+id/editPassword"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:hint="두 번째 숫자 입력"
-        android:inputType="numberSigned|numberDecimal"
-        android:gravity="center"
-        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="비밀번호 0~9"
+        android:inputType="numberPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNum1" />
+        app:layout_constraintTop_toBottomOf="@+id/editName" />
 
-    <!-- 추가된 "두 수의 합은?" 타이틀 또는 안내 버튼 -->
+    <!-- 3. 이메일 -->
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+    <!-- 4. 연락처 -->
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="연락처"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+    <!-- 5. 생년월일 -->
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="생년월일"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+    <!-- 6. 결과보기 버튼 (입력 필드들 아래 중앙 배치) -->
     <Button
-        android:id="@+id/btnTitle"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="두 수의 합은?"
-        android:textColor="#006AA6"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNum2" />
-
-    <!-- 계산하기 버튼 -->
-    <Button
-        android:id="@+id/btnCalc"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:text="계산하기"
-        android:textSize="20sp"
-        android:onClick="onClickCalculate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTitle" />
-
-    <!-- 결과값이 표시되는 텍스트뷰 -->
-    <TextView
-        android:id="@+id/textResult"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="결과: 0"
-        android:textSize="26sp"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:onClick="onButtonClick"
+        android:text="결과보기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalc" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+
+    <!-- 7. 하단 결과 출력 창 (TextViewResult) -->
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="24dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="421dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

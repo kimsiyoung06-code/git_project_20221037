@@ -1,0 +1,37 @@
+<!doctype html> <!-- 한국어 주석: HTML5 문서로 선언합니다. -->
+<html lang="ko"> <!-- 한국어 주석: 문서의 기본 언어를 한국어로 지정합니다. -->
+<head> <!-- 한국어 주석: 문서 설정을 시작합니다. -->
+  <meta charset="utf-8"> <!-- 한국어 주석: 한글 문자 인코딩을 지정합니다. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 한국어 주석: 휴대전화 화면 크기에 맞춥니다. -->
+  <title>간단 계산기</title> <!-- 한국어 주석: 브라우저 탭 제목을 지정합니다. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- 한국어 주석: 분리한 계산기 스타일을 불러옵니다. -->
+  <script src="js/calculator.js" defer></script> <!-- 한국어 주석: 분리한 계산기 기능을 불러옵니다. -->
+</head> <!-- 한국어 주석: 문서 설정을 끝냅니다. -->
+<body> <!-- 한국어 주석: 화면에 표시할 내용을 시작합니다. -->
+  <main class="calculator"> <!-- 한국어 주석: 휴대전화형 계산기 본체입니다. -->
+    <h1>간단 계산기</h1> <!-- 한국어 주석: 계산기 제목입니다. -->
+    <output id="display" aria-live="polite" aria-label="계산기 화면">0</output> <!-- 한국어 주석: 현재 숫자와 계산 결과를 표시합니다. -->
+    <div class="buttons"> <!-- 한국어 주석: 계산기 버튼을 격자로 배치합니다. -->
+      <button class="utility" id="clear" type="button">AC</button> <!-- 한국어 주석: 계산 상태를 초기화합니다. -->
+      <button class="utility" id="sign" type="button">+/−</button> <!-- 한국어 주석: 현재 숫자의 부호를 바꿉니다. -->
+      <button class="utility" id="percent" type="button">%</button> <!-- 한국어 주석: 현재 숫자를 백분율로 바꿉니다. -->
+      <button class="operator" data-operation="/" type="button" aria-label="나누기">÷</button> <!-- 한국어 주석: 나눗셈 연산을 선택합니다. -->
+      <button data-number="7" type="button">7</button> <!-- 한국어 주석: 숫자 7을 입력합니다. -->
+      <button data-number="8" type="button">8</button> <!-- 한국어 주석: 숫자 8을 입력합니다. -->
+      <button data-number="9" type="button">9</button> <!-- 한국어 주석: 숫자 9를 입력합니다. -->
+      <button class="operator" data-operation="*" type="button" aria-label="곱하기">×</button> <!-- 한국어 주석: 곱셈 연산을 선택합니다. -->
+      <button data-number="4" type="button">4</button> <!-- 한국어 주석: 숫자 4를 입력합니다. -->
+      <button data-number="5" type="button">5</button> <!-- 한국어 주석: 숫자 5를 입력합니다. -->
+      <button data-number="6" type="button">6</button> <!-- 한국어 주석: 숫자 6을 입력합니다. -->
+      <button class="operator" data-operation="-" type="button" aria-label="빼기">−</button> <!-- 한국어 주석: 뺄셈 연산을 선택합니다. -->
+      <button data-number="1" type="button">1</button> <!-- 한국어 주석: 숫자 1을 입력합니다. -->
+      <button data-number="2" type="button">2</button> <!-- 한국어 주석: 숫자 2를 입력합니다. -->
+      <button data-number="3" type="button">3</button> <!-- 한국어 주석: 숫자 3을 입력합니다. -->
+      <button class="operator" data-operation="+" type="button" aria-label="더하기">+</button> <!-- 한국어 주석: 덧셈 연산을 선택합니다. -->
+      <button data-number="0" class="zero" type="button">0</button> <!-- 한국어 주석: 숫자 0을 입력합니다. -->
+      <button id="decimal" type="button">.</button> <!-- 한국어 주석: 소수점을 입력합니다. -->
+      <button id="equals" class="equals" type="button">=</button> <!-- 한국어 주석: 계산 결과를 표시합니다. -->
+    </div> <!-- 한국어 주석: 계산기 버튼 배치를 끝냅니다. -->
+  </main> <!-- 한국어 주석: 계산기 본체를 끝냅니다. -->
+</body> <!-- 한국어 주석: 화면 내용을 끝냅니다. -->
+</html> <!-- 한국어 주석: HTML 문서를 끝냅니다. -->
